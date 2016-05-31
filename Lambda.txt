@@ -1,0 +1,16 @@
+  var param1 = Expression.Parameter(typeof(string), "vehicleID");
+            var param2 = Expression.Parameter(typeof(string), "routeID");
+
+            ParameterExpression[] pParams = { param1, param2 };
+
+            var body = Expression.AndAlso(
+                                           Expression.Equal(
+                                                Expression.PropertyOrField(param1, "vehicleID"),
+                                                Expression.Constant("121")
+                                           ),
+                                           Expression.Equal(
+                                                Expression.PropertyOrField(param2, "routeID"),
+                                                Expression.Constant("12313")
+                                           ));
+
+            var lambda = Expression.Lambda<Func<AmeriMobileGeoRT, bool>>(body, pParams);
